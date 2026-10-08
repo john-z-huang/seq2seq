@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mini-seq2seq"
+version = "0.1.0"
+description = "Minimal Seq2Seq model with attention for neural machine translation."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "torch>=2.14.1",
+    "datasets>=5.1.0",
+    "spacy>=3.8.16",
+    "modal[api-proxy-support]",
+]
+
+[project.scripts]
+prepare-modal-data = "modal_commands:prepare_data"
+train-modal-seq2seq = "modal_commands:train_model"
+infer-modal-seq2seq = "modal_commands:infer_model"
+
+[tool.setuptools]
+py-modules = [
+    "model",
+    "utils",
+    "train",
+    "prepare_modal_data",
+    "train_modal",
+    "infer_modal",
+    "modal_commands",
+]
